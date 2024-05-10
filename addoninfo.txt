@@ -1,0 +1,10 @@
+"AddonInfo"
+{
+	addonSteamAppID		550
+	addontitle			"[VScript] Boss Warn"
+	addonversion	    1.0
+	addonauthor 		"Pyri"
+	addonDescription 	"A Simple VScript that recreates a SorceMod plugin that will notify players if a Tank or Witch spawns. Helpful for new players and for Versus players."
+	
+	addonContent_Script 1
+}
