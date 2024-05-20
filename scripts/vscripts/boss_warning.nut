@@ -16,6 +16,7 @@ const WITCHDEAD			= "A Witch has been killed!";
 
 const TANKSNDDELAY		= 2;
 const WITCHSNDDELAY		= 2;
+const HUD_PRINTTALK		= 3;
 // ---------------------------------------------
 // LOCAL VARIABLES
 // ---------------------------------------------
