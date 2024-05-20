@@ -1,7 +1,6 @@
 Msg( "-----------------------------------\n" );
 Msg( "  Boss Infected Warning Initialized\n"  );
 Msg( "-----------------------------------\n" );
-
 // ---------------------------------------------
 // CONSTANTS
 // ---------------------------------------------
@@ -17,7 +16,6 @@ const WITCHDEAD			= "A Witch has been killed!";
 
 const TANKSNDDELAY		= 2;
 const WITCHSNDDELAY		= 2;
-
 // ---------------------------------------------
 // LOCAL VARIABLES
 // ---------------------------------------------
@@ -25,44 +23,22 @@ local WarnSound 		= "ui/pickup_secret01.wav";
 local TankTimeDelay 	= 0;
 local WitchTimeDelay 	= 0;
 
-// Scrapped unique sound warning for Witch
-// local PlayWitchSound = WitchSound[ RandomInt ( 0, WitchSound.len()-1 ) ];
-/* local WitchSound =
-[
-	"music/witch/lost_little_witch_01a.wav",
-	"music/witch/lost_little_witch_01b.wav",
-	"music/witch/lost_little_witch_02a.wav",
-	"music/witch/lost_little_witch_02b.wav",
-	"music/witch/lost_little_witch_03a.wav",
-	"music/witch/lost_little_witch_03b.wav",
-	"music/witch/lost_little_witch_04a.wav",
-	"music/witch/lost_little_witch_04b.wav"
-]; */
-
 // Make sure our sounds are loaded.
 if ( !IsSoundPrecached( WarnSound ) )
 {
 	PrecacheSound( WarnSound )
 }
 
-/* foreach ( sound in WitchSound )
-{
-	if ( !IsSoundPrecached( sound ) )
-	{
-		PrecacheSound( sound )
-	}
-} */
-
 // Start our Boss Warning Script.
 BossWarning <-
 {
-    function OnGameEvent_player_spawn( params )
-    {
-    	if ( "userid" in params && params.userid )
+	function OnGameEvent_player_spawn( params )
+	{
+		if ( "userid" in params && params.userid )
 		{
 			// A Tank just spawned, let players know.
 			local BossInfected = GetPlayerFromUserID( params.userid );
-			if ( BossInfected.GetZombieType() == 8 && !Director.IsTankInPlay() )
+			if ( BossInfected.GetZombieType() == 8 )
 			{
 				local currentTime = Time();
 				// Check if TankTimeDelay is 0
@@ -76,7 +52,7 @@ BossWarning <-
 				ClientPrint( null, HUD_PRINTTALK, format( GREEN + PREFIX + ORANGE + SPACER + TANKWARNING ) );
 			}
 		}
-    }
+	}
 
 	function OnGameEvent_witch_spawn( params )
 	{
